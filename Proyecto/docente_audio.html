@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Docentes de Bachillerato</title>
+
+<style>
+
+body{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #0d1b4c, #1d2f7a);
+    position: relative;
+    overflow-x: hidden;
+}
+
+body::before{
+    content: "";
+    position: fixed;
+    top: 58%;
+    left: 50%;
+    width: 700px;
+    height: 700px;
+    transform: translate(-50%, -50%);
+    background-image: url('imagenes/logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.95;
+    z-index: -1;
+}
+
+.titulo{
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.titulo h1{
+    color: #ffd700;
+    font-size: 42px;
+    margin-bottom: 5px;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+}
+
+.titulo h2{
+    color: white;
+    font-size: 22px;
+    font-weight: normal;
+    margin-top: 0;
+    letter-spacing: 1px;
+}
+
+.contenedor{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+.docente{
+    background: white;
+    width: 220px;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: 0.3s;
+    border-top: 6px solid #ffd700;
+}
+
+.docente:hover{
+    transform: scale(1.05);
+    box-shadow: 0px 8px 20px rgba(0,0,0,0.4);
+}
+
+.docente img{
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.nombre{
+    padding: 15px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #0d1b4c;
+    background: #ffffff;
+}
+
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+}
+
+.modal-contenido{
+    background: white;
+    width: 350px;
+    margin: 8% auto;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    border-top: 8px solid #ffd700;
+}
+
+.modal-contenido img{
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #0d1b4c;
+}
+
+.cerrar{
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #c40000;
+    font-weight: bold;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- BOTON SONIDO AMBIENTE -->
+<button id="btnAmbiente" onclick="iniciarAmbiente()" style="
+    position:fixed; bottom:20px; right:20px; z-index:9999;
+    background:#ffd700; color:#0d1b4c; border:none;
+    padding:10px 18px; border-radius:30px; font-size:14px;
+    font-weight:bold; cursor:pointer; box-shadow:0 3px 10px rgba(0,0,0,0.3);
+">🎵 Activar sonido</button>
+
+<div class="titulo">
+    <h1>Docentes de Bachillerato</h1>
+    <h2>Unidad Educativa "26 de Noviembre"</h2>
+</div>
+
+<div class="contenedor">
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+    'Mgs. Marcia Condo',
+    'Docente de Matemáticas',
+    'Docente de Matemática de la Unidad Educativa "26 de Noviembre" desde 2016. Licenciada en Ciencias de la Educación, mención Matemática, y Magíster en Educación Básica. Cuenta con 15 años de experiencia docente, destacándose por su compromiso, ética profesional y vocación educativa. Promueve el razonamiento lógico, el pensamiento crítico y la confianza en las capacidades de sus estudiantes.',
+    'imagenes/marcia.jpg'
+)">
+        <img src="imagenes/marcia.jpg" alt="Docente">
+        <div class="nombre">Mgs. Marcia Condo</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+    'Lic. Ana Chávez',
+    'Docente de Filosofía y Biología',
+    'Docente de Filosofía y Biología de la Unidad Educativa "26 de Noviembre". Licenciada por la Universidad Estatal de Guayaquil y Magíster en Educación. Cuenta con 14 años de experiencia docente, destacándose por su compromiso, vocación y responsabilidad. Promueve valores como el respeto, la empatía y la solidaridad, formando estudiantes críticos y comprometidos con la sociedad.',
+    'imagenes/ana.jpg'
+)">
+        <img src="imagenes/ana.jpg" alt="Docente">
+        <div class="nombre">Lic.Ana Chávez</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. pablo Largo',
+        'ESCRIBE AQUI LA MATERIA',
+        'ESCRIBE AQUI LA INFORMACION',
+        'imagenes/pablo.jpg'
+    )">
+        <img src="imagenes/pablo.jpg" alt="Docente">
+        <div class="nombre">Mgs. pablo Largo</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. Glenda toro',
+        'ESCRIBE AQUI LA MATERIA',
+        'ESCRIBE AQUI LA INFORMACION',
+        'imagenes/glenda.jpg'
+    )">
+        <img src="imagenes/glenda.jpg" alt="Docente">
+        <div class="nombre">Mgs. Glenda toro</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'mgs.Yasmania Jaramillo',
+        'ESCRIBE AQUI LA MATERIA',
+        'ESCRIBE AQUI LA INFORMACION',
+        'imagenes/yasmania.jpg'
+    )">
+        <img src="imagenes/yasmania.jpg" alt="Docente">
+        <div class="nombre">mgs.Yasmania Jaramillo</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. Lissete Jara',
+        'ESCRIBE AQUI LA MATERIA',
+        'ESCRIBE AQUI LA INFORMACION',
+        'imagenes/lissete.jpg'
+    )">
+        <img src="imagenes/lissete.jpg" alt="Docente">
+        <div class="nombre">Mgs. Lissete Jara</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Dra. Lorena Delgado',
+        'ESCRIBE AQUI LA MATERIA',
+        'ESCRIBE AQUI LA INFORMACION',
+        'imagenes/lorena.jpg'
+    )">
+        <img src="imagenes/lorena.jpg" alt="Docente">
+        <div class="nombre">Dra. Lorena Delgado</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'lic. Manuel Gálvez',
+        'Conserje Institucional',
+        'Conserje de la Unidad Educativa "26 de Noviembre" desde el año 2000. Cuenta con 25 años de servicio y se destaca por su responsabilidad, dedicación y compromiso con el cuidado institucional. Promueve valores como la disciplina, el orden y el aseo, siendo apreciado por su amabilidad y cercanía con la comunidad educativa.',
+        'imagenes/manuel.jpg'
+    )">
+        <img src="imagenes/manuel.jpg" alt="Docente">
+        <div class="nombre">lic. Manuel Gálvez</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Lic.Lourdes Durán',
+        'ESCRIBE AQUI LA MATERIA',
+        'ESCRIBE AQUI LA INFORMACION',
+        'imagenes/lourdes.jpg'
+    )">
+        <img src="imagenes/lourdes.jpg" alt="Docente">
+        <div class="nombre">Lic.Lourdes Durán</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. Andrea García',
+        'ESCRIBE AQUI LA MATERIA',
+        'ESCRIBE AQUI LA INFORMACION',
+        'imagenes/andrea.jpg'
+    )">
+        <img src="imagenes/andrea.jpg" alt="Docente">
+        <div class="nombre">Mgs. Andrea García</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Lic.Diego Freire',
+        'ESCRIBE AQUI LA MATERIA',
+        'ESCRIBE AQUI LA INFORMACION',
+        'imagenes/diego.jpg'
+    )">
+        <img src="imagenes/diego.jpg" alt="Docente">
+        <div class="nombre">Lic.Diego Freire</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. Omar Ordoñez',
+        'ESCRIBE AQUI LA MATERIA',
+        'ESCRIBE AQUI LA INFORMACION',
+        'imagenes/omar.jpg'
+    )">
+        <img src="imagenes/omar.jpg" alt="Docente">
+        <div class="nombre">Mgs. Omar Ordoñez</div>
+    </div>
+
+    <!-- DOCENTE -->
+    <div class="docente" onclick="mostrarInfo(
+        'Mgs. Manuel Armijos',
+        'ESCRIBE AQUI LA MATERIA',
+        'ESCRIBE AQUI LA INFORMACION',
+        'imagenes/manuelarmijos.jpg'
+    )">
+        <img src="imagenes/manuelarmijos.jpg" alt="Docente">
+        <div class="nombre">Mgs. Manuel Armijos</div>
+    </div>
+
+</div>
+
+<!-- VENTANA EMERGENTE -->
+<div class="modal" id="modal">
+    <div class="modal-contenido">
+        <span class="cerrar" onclick="cerrarModal()">&times;</span>
+        <img id="fotoDocente" src="">
+        <h2 id="nombreDocente"></h2>
+        <p id="materiaDocente"></p>
+        <p id="infoDocente"></p>
+    </div>
+</div>
+
+<script>
+
+// ——— AUDIO ———
+let audioCtx = null;
+let ambientNode = null;
+
+function getAudioCtx(){
+    if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    return audioCtx;
+}
+
+function sonidoClick(){
+    const ctx = getAudioCtx();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(880, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(440, ctx.currentTime + 0.08);
+    gain.gain.setValueAtTime(0.18, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 0.13);
+}
+
+function iniciarAmbiente(){
+    const ctx = getAudioCtx();
+    if(ambientNode) return;
+    ambientNode = ctx.createOscillator();
+    const gain = ctx.createGain();
+    ambientNode.connect(gain);
+    gain.connect(ctx.destination);
+    ambientNode.type = 'sine';
+    ambientNode.frequency.setValueAtTime(55, ctx.currentTime);
+    gain.gain.setValueAtTime(0.0, ctx.currentTime);
+    gain.gain.linearRampToValueAtTime(0.012, ctx.currentTime + 2);
+    ambientNode.start();
+    document.getElementById('btnAmbiente').style.display = 'none';
+}
+// ——— FIN AUDIO ———
+
+function mostrarInfo(nombre, materia, info, foto){
+    sonidoClick();
+    document.getElementById("nombreDocente").innerText = nombre;
+    document.getElementById("materiaDocente").innerText = materia;
+    document.getElementById("infoDocente").innerText = info;
+    document.getElementById("fotoDocente").src = foto;
+    document.getElementById("modal").style.display = "block";
+}
+
+function cerrarModal(){
+    document.getElementById("modal").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>
